@@ -23,9 +23,9 @@ function longestWord(sen) {
         return longestWordArr;
     }
   }
-//Use for testing.
-//   let output = "I am learning JavaScript in Talent Path"
-//   console.log(longestWord(output));
+// Use for testing.
+// let output = "I am learning JavaScript in Talent Path"
+// console.log(longestWord(output));
 
 // CHALLENGE 2: ARRAY CHUNKING
 // Split an array into chunked arrays of a specific length
@@ -84,24 +84,21 @@ function isAnagram(str1, str2) {
 // Z should turn to A
 // ex. 'hello there' === 'Ifmmp UIfsf'
 function letterChanges(str) {
-    const vowels = ['a', 'e', 'u', 'i', 'o']; //create an array named vowels to hold all vowels in the alphabet
-    let newStr = ""; //initialize an empty new string.
-    let letter = "";
-    for (i of str.toLowerCase()){
-        if (i.charCodeAt(0)  < 97 || i.charCodeAt(0) > 122){
-            newStr += i;
-        }
+    //let newStr hold value str being passed into function
+    //make all string lowercase
+    //The replace() method returns a new string with some or all matches of a pattern replaced by a replacement. (MDN definition)
+    //Add regular expression
+    //An arrow function expression is a syntactically compact alternative to a regular function expression (MDN definition)
+    let newStr = str.toLowerCase().replace(/[a-z]/gi, char => {
+        if (char === 'z' || char === 'Z') {
+          return 'a';
+        } 
         else {
-            letter = String.fromCharCode((i.charCodeAt(0) - 97 + 1) % 25 + 97)
-            if (vowels.includes(letter)){
-                newStr += letter.toUpperCase();
-            }
-            else {
-                newStr += letter;
-            }
-        }    
-    }
-    return newStr;
+          return String.fromCharCode(char.charCodeAt() + 1);
+        }
+      })
+      newStr = newStr.replace(/a|e|i|o|u/gi, vowel => vowel.toUpperCase());
+      return newStr;
 }
-let output = "JavaScript";
-console.log(letterChanges(output));
+// let output = "JavaScriptzZ";
+// console.log(letterChanges(output));
