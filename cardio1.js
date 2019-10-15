@@ -134,4 +134,5 @@ function fizzBuzz() {
     console.log(output);
 
 }
+// let output = 0;
 fizzBuzz();
